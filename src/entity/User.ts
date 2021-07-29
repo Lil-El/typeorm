@@ -1,5 +1,5 @@
 import {Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn} from "typeorm";
-import { Company } from "./Company";
+import { UserMetadata } from "./UserMetadata";
 
 @Entity()
 export class User {
@@ -15,7 +15,6 @@ export class User {
     })
     phone: string;
 
-    @OneToOne(() => Company, company => company.staff)
-    @JoinColumn() // 关系的拥有方：关系的拥有方包含数据库中具有外键的列。
-    company: Company;
+    @OneToOne(() => UserMetadata, userMetadata => userMetadata.user)
+    metadata: UserMetadata;
 }
