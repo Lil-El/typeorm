@@ -17,6 +17,24 @@ TypeORM 是一个ORM (opens new window)框架，它可以运行在 NodeJS、Brow
 1. npm i typeorm -g
 2. typeorm init --name MyProject --database mysql --express
 
+## Entity
+
+Photo和PhotoMetadata：OneToOne
+
+- PhotoMetadata是关系的持有方，即拥有PhotoId的外键列
+- PhotoMetadata包含了Photo；但是Photo对PhotoMetadata一无所知；
+
+Photo和Author：OneToMany - ManyToOne
+
+- Photo是关系的持有方，即拥有authorId的外键列    ManyToOne
+- Author包含了Photo[]；包含了反向关系   OneToMany
+
+Photo和Album： 一个 photo 可以放在多个 albums 中，每个 albums 可以包含多个 photo
+
+- ManyToMany 
+- JoinTable 拥有JoinTable的一方会创建photo和album的关系联结表
+
+
 ## 数据库
 
 1. 创建database: typeormsql
